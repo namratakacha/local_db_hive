@@ -140,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 final String detail = detailController.text;
 
                                 ToDoModel todo = ToDoModel(
-                                    title: title, detail: detail, isCompleted: true);
+                                    title: title, detail: detail, isCompleted: false);
                                 todoBox.put(key, todo);
                                 Navigator.pop(context);
                                 titleController.clear();
