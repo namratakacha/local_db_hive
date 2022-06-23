@@ -113,7 +113,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                       return Dialog(
                                         child: Padding(
                                           padding: const EdgeInsets.all(20),
-                                          child: ElevatedButton(
+                                          child: todoItem.isCompleted! ?ElevatedButton(
+                                            child: Text('Mark as Incompleted'),
+                                            onPressed: () {
+                                              ToDoModel mTodo = ToDoModel(
+                                                  title: todoItem.title,
+                                                  detail: todoItem.detail,
+                                                  isCompleted: false);
+                                              todoBox.put(key, mTodo);
+                                              Navigator.pop(context);
+                                            },
+                                          ) : ElevatedButton(
                                             child: Text('Mark as Completed'),
                                             onPressed: () {
                                               ToDoModel mTodo = ToDoModel(
@@ -140,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 final String detail = detailController.text;
 
                                 ToDoModel todo = ToDoModel(
-                                    title: title, detail: detail, isCompleted: false);
+                                    title: title, detail: detail, isCompleted: todoItem.isCompleted);
                                 todoBox.put(key, todo);
                                 Navigator.pop(context);
                                 titleController.clear();
